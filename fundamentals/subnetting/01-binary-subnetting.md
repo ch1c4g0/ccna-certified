@@ -54,11 +54,8 @@ Now we can take our original address, removing the 3rd and 4th octet, appending 
 ```
 172.16.001000011.01111011
 |_____|____|____________|
-   |    |___|  Host Bits
-16 bits     |
-          20 bits
-            OR
-            /20
+   |     |       |
+  /16   /20     Host
 ```
 
 We can now repeat the steps listed initially. The subnet and 1st host field will be the same, the last host and broadcast address will change here.This is because the four Zeros on the network side need to be added together with the four zeros on the host side.
