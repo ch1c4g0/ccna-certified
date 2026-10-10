@@ -149,6 +149,8 @@ To find the last host, we turn all values to 1, except for the last bit.
 
 #### Broadcast
 
+To find the broadcast address, we turn all values to 1.
+
 ```text
 172.16.11111111.11111111
         OR
