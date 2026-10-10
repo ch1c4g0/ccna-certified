@@ -64,33 +64,93 @@ We can now repeat the steps listed initially. The subnet and 1st host field will
 
 #### Network 172.16.32.123/20 or 255.255.240.0
 
-172.16.0010|00011.01111011
+```text
+172.16.0010|0011.01111011
+```
 
 Everything after the 20th bit(the network ID) will now be changed like the previous example.
 
 **To find the subnet, we change all host bits to 0.**
+
+```text
 172.16.0010|0000.00000000 = 172.16.32.0
+```
 
 **To find the first address, we change all host bits to 0, except the last bit.**
+
+```text
 172.16.0010|0000.00000001 = 172.16.32.1
+```
 
 **To find the last host address, we change all host bits to 1, except for the last bit.**
+
+```text
 172.16.0010|1111.11111110
+```
 
 At this point, you'll need to convert your 3rd and 4th octet back to hexadecimal. In this case, it would be 47 and 254.
+```text
 172.16.0010|1111.11111110 = 172.16.47.254
+```
 
 **To find the broadcast address, we will change all host bits to 1.**
 
+```text
 172.16.0010|1111.11111111 = 172.16.47.255
+```
 
- 
+**Example**
+```text
+172.16.129.1/17 or 172.16.129.1/255.255.128.0
+```
 
+We know that because the third and fourth octet are not 255 that they represent the host portion. Because the third octet is not 0, our subnet is somewhere between that third octet.
 
+Step 1: Convert third octet to binary. luckily this is easy. 10000001 is equal to 129.
 
+Step 2: Add that as the octet to the IP address (172.16.1000001.00000000)
 
+Because we know each octet is 8 bits, the first to octets represent 16. To finish our /17 subnet, we just need to include the first number in the third octet(1).
 
+```text
+172.16.1000001.00000000
+       |
+      /17
+```
 
+Everything after represents our host portion. Now, we can use our previous chart below to calculate the subnet value, 1st host, last host, and broadcast address.
 
+##### Subnet ID
+To find the subnet, we turn all binary values after the seventeenth to 0. What is left turned back in to decimal. In this case it's 128.
 
+```text
+172.16.1000000.00000000
+        OR
+    172.16.128.0
+```
+#### First Host
 
+To find the first host, we turn all values to 0, except for the last bit.
+
+```text
+172.16.1000000.00000001
+        OR
+    172.16.128.1
+```
+#### Last Host
+
+To find the last host, we turn all values to 1, except for the last bit.
+
+```text
+172.16.11111111.11111110
+        OR
+    172.16.255.254
+```
+
+#### Broadcast
+
+```text
+172.16.11111111.11111111
+        OR
+    172.16.255.255
+```
