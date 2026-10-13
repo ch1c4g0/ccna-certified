@@ -10,15 +10,34 @@ Subnet this into four subnets as follows
 6) Configure the routers per the instructions in the diagram.
 7) Verify that PCs can access cisco.com and facebook.com using their browsers
 ```
-## Gathering Info
+# Quick Reference Formulas
 
-First thing I wanted to do was find the subnet mask, which I already knew is 255.255.255.0
+**Finding available subnets**
+```text
+2^(new prefix - old prefix) = Total subnets
+```
+**Finding the amount of subnets you need**
+```text
+2^n = number of subnets
 
-I then gathered information on how many hosts are inside site 1&2.
+[!NOTE] Each borrowed bit doubles the number of possible subnet combinations:
 
-PC's x3, Servers x1, Switch x1, Router x1
+1 borrowed bit  = 2¹ = 2 subnets
+2 borrowed bits = 2² = 4 subnets
+3 borrowed bits = 2³ = 8 subnets
+```
+**Calculating Block Size**
+```text
+256 - Last network octet = Block Size
+```
+**Calculating CIDR use-able hosts**
+```text
+2^(32-Current /CIDR) -2
+```
 
-## Creating subnets
 
-I'm going to use the subnet formula to see how many subnets we have available.
+
+
+
+
 
